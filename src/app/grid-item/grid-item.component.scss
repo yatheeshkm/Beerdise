@@ -1,0 +1,33 @@
+@import '../../sass/variables';
+
+.grid-item {
+  display: block;
+  background-color: #fff;
+  text-align: center;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, .1);
+}
+
+.thumb {
+  max-height: 180px;
+  max-width: 180px;
+  margin-bottom: 20px;
+}
+
+.title {
+  color: $violet;
+  font: {
+    weight: bolder;
+    size: 1.5rem;
+  }
+}
+
+.tagline {
+
+}
+
+.desc {
+  height: 150px;
+}

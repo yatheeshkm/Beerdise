@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Encode+Sans+Expanded:400,700&subset=latin-ext');
+@import './sass/variables';
+
+body {
+  background-color:$background;
+  color:$gray-text;
+  font: {
+    family: 'Encode Sans Expanded', sans-serif;
+    size: 17px;
+  }
+}
