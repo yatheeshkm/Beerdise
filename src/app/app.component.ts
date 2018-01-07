@@ -12,6 +12,9 @@ export class AppComponent implements OnInit {
   beers: Object;
   private beersSub: ISubscription;
 
+  similarBeers: Object;
+  private similarBeersSub: ISubscription;
+
   @ViewChild(ModalComponent) modalCmp;
   modalBeer: Object;
 
@@ -21,14 +24,21 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.beersSub = this.data.getBeers().subscribe(data => {
       this.beers = data;
+      //console.log(this.beers);
     });
-
-    console.log(this.beers);
   }
 
   showModal(item) {
     this.modalBeer = item;
+    this.getSimilarBeer(item.abv, item.ibu, item.ebc, 3);
     this.modalCmp.open();
+  }
+
+  getSimilarBeer(abv, ibu, ebc, items) {
+    this.similarBeersSub = this.data.getSimilarBeer(abv, ibu, ebc, items).subscribe(data => {
+      this.similarBeers = data;
+      console.log(this.similarBeers);
+    });
   }
 
 }

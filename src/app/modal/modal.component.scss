@@ -1,0 +1,37 @@
+@import '../../sass/variables';
+@import '../../sass/mixins';
+
+.modal-header {
+  border-bottom: 0;
+  justify-content: flex-end;
+}
+
+.thumb {
+  max-width: 140px;
+}
+
+.tagline {
+  font-size: 1.2em;
+}
+
+.special-line {
+  border-top: 6px solid $violet;
+  width: 100px;
+  margin: 20px 0;
+}
+
+.data {
+  display: flex;
+
+  div {
+    margin-right: 15px;
+  }
+}
+
+.desc {
+  margin: 25px 0;
+}
+
+.similar-beers {
+  margin: 25px 0;
+}

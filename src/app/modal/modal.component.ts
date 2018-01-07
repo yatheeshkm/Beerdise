@@ -8,6 +8,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class ModalComponent {
   @Input() beer: Object;
+  @Input() similarBeers: Object;
 
   @ViewChild('content') content: TemplateRef<any>;
 
@@ -15,6 +16,8 @@ export class ModalComponent {
   }
 
   open() {
-    this.modalService.open(this.content);
+    this.modalService.open(this.content, {
+      size: 'lg',
+    });
   }
 }

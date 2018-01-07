@@ -1,0 +1,21 @@
+@import '../../../sass/variables';
+
+.beer {
+  border: 1px solid $light-gray;
+  text-align: center;
+  padding: 20px;
+}
+
+.thumb {
+  max-height: 150px;
+  max-width: 150px;
+  width: auto;
+  height: auto;
+}
+
+.name {
+  color: $dark-gray;
+  font-size: 1em;
+  margin-top: 20px;
+  height: 3em;
+}

@@ -1,13 +1,21 @@
 @import '../../sass/variables';
+@import '../../sass/mixins';
 
 .grid-item {
   display: block;
   background-color: #fff;
   text-align: center;
   padding: 20px;
-  border-radius: 5px;
   margin-bottom: 20px;
-  box-shadow: 0 0 50px rgba(0, 0, 0, .1);
+  @include rounded();
+  @include box-shadow(0, 0, 30px, rgba(0, 0, 0, .1));
+  @include transition(120ms ease-in);
+
+  &:hover {
+    cursor: pointer;
+    @include scale(1.03);
+    @include box-shadow(0, 0, 30px, rgba(0, 0, 0, .3));
+  }
 }
 
 .thumb {
@@ -17,15 +25,7 @@
 }
 
 .title {
-  color: $violet;
-  font: {
-    weight: bolder;
-    size: 1.5rem;
-  }
-}
-
-.tagline {
-
+  font-size: 1.5rem;
 }
 
 .desc {

@@ -12,6 +12,7 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {AppComponent} from './app.component';
 import {ModalComponent} from './modal/modal.component';
 import {GridItemComponent} from './grid-item/grid-item.component';
+import { SimilarBeerComponent } from './modal/similar-beer/similar-beer.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {GridItemComponent} from './grid-item/grid-item.component';
     GridItemComponent,
     ModalComponent,
     NgbModalBackdrop,
-    NgbModalWindow
+    NgbModalWindow,
+    SimilarBeerComponent
   ],
   imports: [
     BrowserModule,
