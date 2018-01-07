@@ -1,0 +1,28 @@
+<div class="container" *ngIf="beer">
+  <div class="row">
+    <div class="col-sm-3 text-center">
+      <img src="{{beer.image_url}}" alt="{{beer.name}}" class="thumb"/>
+    </div>
+    <div class="col-sm-9">
+      <h3 class="title">{{beer.name}}</h3>
+      <p class="tagline">{{beer.tagline}}</p>
+
+      <hr class="special-line"/>
+
+      <div class="data">
+        <div><strong>IBU:</strong> {{beer.ibu}}</div>
+        <div><strong>ABV:</strong> {{beer.abv}}%</div>
+        <div><strong>EBC:</strong> {{beer.ebc}}</div>
+      </div>
+
+      <div class="desc">
+        <p>{{beer.description}}</p>
+
+        <strong>Best served with:</strong>
+        <ul>
+          <li *ngFor="let item of beer.food_pairing">{{item}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="row align-items-stretch">
+  <app-grid-item
+    *ngFor="let item of beers"
+    [beer]="item"
+    (click)="showModal(item)"
+    class="col-sm-4">
+  </app-grid-item>
+</div>
+
+<app-modal
+  [beer]="modalBeer"
+  [similarBeers]="similarBeers">
+</app-modal>

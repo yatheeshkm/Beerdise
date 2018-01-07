@@ -1,0 +1,30 @@
+@import '../../sass/variables';
+@import '../../sass/mixins';
+
+.search-form {
+  display: flex;
+  justify-content: center;
+}
+
+.input-text {
+  width: 500px;
+  color: $dark-gray;
+  border: 0;
+  padding: 10px;
+  font-family: $main-font;
+}
+
+.submit {
+  font-family: $main-font;
+  padding: 0 35px;
+  border: 1px solid #fff;
+  background: $violet;
+  color: #fff;
+  @include transition(200ms ease-in);
+
+  &:hover {
+    background: #fff;
+    color: $violet;
+    cursor: pointer;
+  }
+}

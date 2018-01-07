@@ -10,7 +10,7 @@ export class DataService {
   private endpoint = 'https://api.punkapi.com/v2/beers';
 
   getBeers() {
-    return this.httpClient.get(this.endpoint);
+    return this.httpClient.get(`${this.endpoint}?page=1&per_page=21 `);
   }
 
   getSimilarBeer(abv, ibu, ebc, items = 3) {
@@ -24,5 +24,9 @@ export class DataService {
 
     console.log(`${this.endpoint}?abv_gt=${abvMin}&abv_lt=${abvMax}&ibu_gt=${ibuMin}&ibu_lt=${ibuMax}&ebc_gt=${ebcMin}&ebc_lt=${ebcMax}&per_page=${length}`);
     return this.httpClient.get(`${this.endpoint}?abv_gt=${abvMin}&abv_lt=${abvMax}&ibu_gt=${ibuMin}&ibu_lt=${ibuMax}&ebc_gt=${ebcMin}&ebc_lt=${ebcMax}&per_page=${length}`);
+  }
+
+  getBeer(id) {
+    return this.httpClient.get(`${this.endpoint}/${id}`);
   }
 }

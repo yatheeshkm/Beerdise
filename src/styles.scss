@@ -6,7 +6,7 @@ body {
   background-color:$background;
   color:$dark-gray;
   font: {
-    family: 'Encode Sans Expanded', sans-serif;
+    family: $main-font;
     size: 17px;
   }
 }
