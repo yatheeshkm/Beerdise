@@ -21,10 +21,15 @@
   background: $violet;
   color: #fff;
   @include transition(200ms ease-in);
+  opacity: .5;
 
-  &:hover {
-    background: #fff;
-    color: $violet;
-    cursor: pointer;
+  &.active {
+    opacity: 1;
+
+    &:hover {
+      background: #fff;
+      color: $violet;
+      cursor: pointer;
+    }
   }
 }

@@ -1,6 +1,6 @@
-<form>
+<form (submit)="showResults()">
   <div class="search-form">
-    <input type="text" placeholder="Enter beer name" class="input-text" name="search">
-    <input type="submit" class="submit" value="Search">
+    <input type="text" placeholder="Enter beer name" class="input-text" name="search" [(ngModel)]="searchText">
+    <input type="submit" class="submit" value="Search" [class.active]="isSearchActive()">
   </div>
 </form>
