@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, OnDestroy} from '@angular/core';
 import {ISubscription} from 'rxjs/Subscription';
 import {DataService} from '../data.service';
 import {ModalComponent} from '../modal/modal.component';
@@ -8,9 +8,10 @@ import {ModalComponent} from '../modal/modal.component';
   templateUrl: './beers-list.component.html',
   styleUrls: ['./beers-list.component.scss']
 })
-export class BeersListComponent implements OnInit {
+export class BeersListComponent implements OnInit, OnDestroy {
   beers: Object;
   private beersSub: ISubscription;
+  private beersObsrv: ISubscription;
 
   similarBeers: Object;
   private similarBeersSub: ISubscription;
@@ -22,7 +23,9 @@ export class BeersListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.beersSub = this.data.getBeers().subscribe(data => this.beers = data);
+    this.beersSub = this.data.getBeers().subscribe(function(){
+      this.beersObsrv = this.data.beersToDisplayObservable.subscribe(beer => this.beers = beer);
+    });
   }
 
   showModal(item) {
@@ -32,10 +35,13 @@ export class BeersListComponent implements OnInit {
   }
 
   getSimilarBeer(abv, ibu, ebc, items) {
-    this.similarBeersSub = this.data.getSimilarBeer(abv, ibu, ebc, items).subscribe(data => {
-      this.similarBeers = data;
-      console.log(this.similarBeers);
-    });
+    this.similarBeers = [];
+    this.similarBeersSub = this.data.getSimilarBeer(abv, ibu, ebc, items).subscribe(data => this.similarBeers = data);
+  }
+
+  ngOnDestroy() {
+    this.beersSub.unsubscribe();
+    this.beersObsrv.unsubscribe();
   }
 
 }

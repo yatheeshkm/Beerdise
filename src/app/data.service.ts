@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class DataService {
@@ -9,8 +11,13 @@ export class DataService {
 
   private endpoint = 'https://api.punkapi.com/v2/beers';
 
+  beersToDisplay =  new BehaviorSubject<any>('');
+  beersToDisplayObservable = this.beersToDisplay.asObservable();
+
   getBeers() {
-    return this.httpClient.get(`${this.endpoint}?page=1&per_page=21 `);
+    return this.httpClient.get(`${this.endpoint}?page=1&per_page=21 `).map(data => {
+      this.beersToDisplay.next(data);
+    });
   }
 
   getSimilarBeer(abv, ibu, ebc, items = 3) {
@@ -28,5 +35,9 @@ export class DataService {
 
   getBeer(id) {
     return this.httpClient.get(`${this.endpoint}/${id}`);
+  }
+
+  searchBeer(string: String) {
+    return this.httpClient.get(`${this.endpoint}?beer_name=${string}`).subscribe(data => this.beersToDisplay.next(data));
   }
 }

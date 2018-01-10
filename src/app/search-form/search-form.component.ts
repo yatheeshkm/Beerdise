@@ -1,4 +1,5 @@
 import {Component, Output, EventEmitter} from '@angular/core';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-search-form',
@@ -12,9 +13,11 @@ export class SearchFormComponent {
   searchText: String = '';
   readonly minSearchLength: number = 3;
 
+  constructor(private data: DataService) {}
+
   showResults() {
     if (this.isSearchActive()) {
-      this.search.emit(this.searchText);
+      this.data.searchBeer(this.searchText);
     }
   }
 
