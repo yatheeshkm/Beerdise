@@ -23,9 +23,9 @@ export class BeersListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.beersSub = this.data.getBeers().subscribe(function(){
+    this.beersSub = this.data.getBeers().subscribe(function() {
       this.beersObsrv = this.data.beersToDisplayObservable.subscribe(beer => this.beers = beer);
-    });
+    }.bind(this));
   }
 
   showModal(item) {
