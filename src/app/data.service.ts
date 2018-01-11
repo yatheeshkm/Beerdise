@@ -10,13 +10,22 @@ export class DataService {
   }
 
   private endpoint = 'https://api.punkapi.com/v2/beers';
+  private pageNumber = 1;
 
-  beersToDisplay =  new BehaviorSubject<any>('');
+  beersToDisplay = new BehaviorSubject<any>('');
   beersToDisplayObservable = this.beersToDisplay.asObservable();
 
   getBeers() {
-    return this.httpClient.get(`${this.endpoint}?page=1&per_page=21 `).map(data => {
+    this.pageNumber = 1;
+    return this.httpClient.get(`${this.endpoint}?page=${this.pageNumber}&per_page=21 `).map(data => {
       this.beersToDisplay.next(data);
+    });
+  }
+
+  getMoreBeers() {
+    this.pageNumber++;
+    return this.httpClient.get(`${this.endpoint}?page=${this.pageNumber}&per_page=21 `).map(data => {
+      this.beersToDisplay.next(this.beersToDisplay.getValue().concat(data));
     });
   }
 

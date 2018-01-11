@@ -4,6 +4,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {DataService} from './data.service';
 import {AppRoutingModule} from './app.routing';
 import {FormsModule} from '@angular/forms';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {NgbModalStack} from '@ng-bootstrap/ng-bootstrap/modal/modal-stack';
@@ -36,7 +37,8 @@ import {SearchFormComponent} from './search-form/search-form.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    InfiniteScrollModule
   ],
   providers: [
     DataService,

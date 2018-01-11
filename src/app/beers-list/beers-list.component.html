@@ -1,4 +1,6 @@
-<div class="row align-items-stretch">
+<div class="row align-items-stretch"
+     infiniteScroll
+     (scrolled)="loadMore()">
   <app-grid-item
     *ngFor="let item of beers"
     [beer]="item"

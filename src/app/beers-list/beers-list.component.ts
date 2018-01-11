@@ -12,6 +12,8 @@ export class BeersListComponent implements OnInit, OnDestroy {
   beers: Object;
   private beersSub: ISubscription;
   private beersObsrv: ISubscription;
+  private loadMoreSub: ISubscription;
+  private isShowingSearchResults: Boolean;
 
   similarBeers: Object;
   private similarBeersSub: ISubscription;
@@ -23,7 +25,8 @@ export class BeersListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.beersSub = this.data.getBeers().subscribe(function() {
+    this.isShowingSearchResults = false;
+    this.beersSub = this.data.getBeers().subscribe(function () {
       this.beersObsrv = this.data.beersToDisplayObservable.subscribe(beer => this.beers = beer);
     }.bind(this));
   }
@@ -39,9 +42,19 @@ export class BeersListComponent implements OnInit, OnDestroy {
     this.similarBeersSub = this.data.getSimilarBeer(abv, ibu, ebc, items).subscribe(data => this.similarBeers = data);
   }
 
+  loadMore() {
+    if (!this.isShowingSearchResults) {
+      this.loadMoreSub = this.data.getMoreBeers().subscribe(function () {
+        this.beersObsrv = this.data.beersToDisplayObservable.subscribe(beer => this.beers = beer);
+      }.bind(this));
+    }
+    this.isShowingSearchResults = true;
+  }
+
   ngOnDestroy() {
     this.beersSub.unsubscribe();
     this.beersObsrv.unsubscribe();
+    this.loadMoreSub.unsubscribe();
   }
 
 }
