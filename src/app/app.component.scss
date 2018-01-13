@@ -7,14 +7,18 @@ main {
 header {
   background: $violet;
   text-align: center;
-  padding:60px 0;
+  padding: 60px 0;
 }
 
 .app-title,
 .app-desc {
-  color:#fff;
+  color: #fff;
 
   span {
     font-weight: lighter;
   }
+}
+
+.app-title:hover {
+  cursor: pointer;
 }

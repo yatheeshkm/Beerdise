@@ -38,7 +38,6 @@ export class DataService {
     const ebcMax = Math.floor((ebc + 20) >= 0 ? ebc + 20 : 0);
     const length = Math.floor(items > 0 ? items : 1);
 
-    console.log(`${this.endpoint}?abv_gt=${abvMin}&abv_lt=${abvMax}&ibu_gt=${ibuMin}&ibu_lt=${ibuMax}&ebc_gt=${ebcMin}&ebc_lt=${ebcMax}&per_page=${length}`);
     return this.httpClient.get(`${this.endpoint}?abv_gt=${abvMin}&abv_lt=${abvMax}&ibu_gt=${ibuMin}&ibu_lt=${ibuMax}&ebc_gt=${ebcMin}&ebc_lt=${ebcMax}&per_page=${length}`);
   }
 

@@ -11,8 +11,8 @@ import {ISubscription} from 'rxjs/Subscription';
 export class SingleBeerComponent implements OnInit, OnDestroy {
 
   private id: number;
-  private beer: Object;
   private beerSub: ISubscription;
+  beer: Object;
 
   constructor(private route: ActivatedRoute,
               private data: DataService) {

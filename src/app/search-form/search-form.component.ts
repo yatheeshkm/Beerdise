@@ -13,7 +13,8 @@ export class SearchFormComponent {
   searchText: String = '';
   readonly minSearchLength: number = 3;
 
-  constructor(private data: DataService) {}
+  constructor(private data: DataService) {
+  }
 
   showResults() {
     if (this.isSearchActive()) {
