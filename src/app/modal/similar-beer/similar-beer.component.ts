@@ -8,5 +8,9 @@ import {Component, Input} from '@angular/core';
 export class SimilarBeerComponent {
 
   @Input() beer: Object;
+  private imageIsLoading = true;
 
+  onLoad() {
+    this.imageIsLoading = false;
+  }
 }

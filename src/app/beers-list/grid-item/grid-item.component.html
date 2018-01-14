@@ -1,5 +1,6 @@
 <div class="grid-item" *ngIf="beer">
-  <img src="{{beer.image_url}}" alt="{{beer.name}}" class="thumb"/>
+  <mat-progress-spinner [diameter]="50" mode="indeterminate" class="spinner" *ngIf="imageIsLoading"></mat-progress-spinner>
+  <img src="{{beer.image_url}}" (load)="onLoad()" alt="{{beer.name}}" class="thumb" [class.loaded]="!imageIsLoading"/>
   <div class="desc">
     <h2 class="title">{{beer.name}}</h2>
     <p class="tagline">{{beer.tagline}}</p>

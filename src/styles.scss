@@ -28,3 +28,10 @@ h1, h2, h3, h4, h5, h6 {
 .tagline {
   color: $light-gray;
 }
+
+.spinner {
+  margin: 25px auto;
+}
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: $violet;
+}

@@ -8,5 +8,9 @@ import {Component, Input} from '@angular/core';
 export class GridItemComponent {
 
   @Input() beer: Object;
+  private imageIsLoading = true;
 
+  onLoad() {
+    this.imageIsLoading = false;
+  }
 }

@@ -1,12 +1,16 @@
+<mat-progress-spinner mode="indeterminate" class="spinner" *ngIf="!beers"></mat-progress-spinner>
+
 <div class="row align-items-stretch"
      infiniteScroll
      (scrolled)="loadMore()">
+
   <app-grid-item
     *ngFor="let item of beers"
     [beer]="item"
     (click)="showModal(item)"
     class="col-sm-4">
   </app-grid-item>
+
 </div>
 
 <app-modal

@@ -19,9 +19,13 @@
 }
 
 .thumb {
-  max-height: 180px;
+  max-height: 0;
   max-width: 180px;
   margin-bottom: 20px;
+
+  &.loaded {
+    max-height: 180px;
+  }
 }
 
 .title {

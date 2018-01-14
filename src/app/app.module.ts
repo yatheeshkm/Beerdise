@@ -6,6 +6,7 @@ import {AppRoutingModule} from './app.routing';
 import {FormsModule} from '@angular/forms';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import {AppComponent} from './app.component';
 import {ModalComponent} from './modal/modal.component';
@@ -32,7 +33,8 @@ import {SearchFormComponent} from './search-form/search-form.component';
     AppRoutingModule,
     FormsModule,
     InfiniteScrollModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    MatProgressSpinnerModule
   ],
   providers: [
     DataService
