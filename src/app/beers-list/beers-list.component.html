@@ -8,7 +8,7 @@
     *ngFor="let item of beers"
     [beer]="item"
     (click)="showModal(item)"
-    class="col-sm-4">
+    class="col-xs-12 col-sm-6 col-lg-4">
   </app-grid-item>
 
 </div>
@@ -17,3 +17,7 @@
   [beer]="modalBeer"
   [similarBeers]="similarBeers">
 </app-modal>
+
+<div class="text-center">
+  <h2 *ngIf="noSearchResults">Brak wyników wyszukiwania</h2>
+</div>

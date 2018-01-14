@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter} from '@angular/core';
+import {Component} from '@angular/core';
 import {DataService} from '../data.service';
 
 @Component({
@@ -8,9 +8,7 @@ import {DataService} from '../data.service';
 })
 export class SearchFormComponent {
 
-  @Output() search = new EventEmitter();
-
-  searchText: String = '';
+  searchText = '';
   readonly minSearchLength: number = 3;
 
   constructor(private data: DataService) {
@@ -18,7 +16,7 @@ export class SearchFormComponent {
 
   showResults() {
     if (this.isSearchActive()) {
-      this.data.searchBeer(this.searchText);
+      this.data.searchQuery(this.searchText);
     }
   }
 

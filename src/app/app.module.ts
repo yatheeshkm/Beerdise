@@ -16,7 +16,6 @@ import {BeersListComponent} from './beers-list/beers-list.component';
 import {SingleBeerComponent} from './single-beer/single-beer.component';
 import {SearchFormComponent} from './search-form/search-form.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,9 +41,7 @@ import {SearchFormComponent} from './search-form/search-form.component';
   bootstrap: [
     AppComponent
   ],
-  entryComponents: [
-
-  ]
+  entryComponents: []
 })
 export class AppModule {
 }

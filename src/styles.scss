@@ -35,3 +35,8 @@ h1, h2, h3, h4, h5, h6 {
 .mat-progress-spinner circle, .mat-spinner circle {
   stroke: $violet;
 }
+
+.extra-lg > .modal-dialog {
+  max-width: 90%;
+  width: 700px;
+}

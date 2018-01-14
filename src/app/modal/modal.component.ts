@@ -18,6 +18,7 @@ export class ModalComponent {
   open() {
     this.modalService.open(this.content, {
       size: 'lg',
+      windowClass: 'extra-lg'
     });
   }
 }

@@ -14,6 +14,10 @@ const appRoutes: Routes = [
     component: BeersListComponent
   },
   {
+    path: 'search',
+    component: BeersListComponent
+  },
+  {
     path: 'beers/:id',
     component: SingleBeerComponent
   }

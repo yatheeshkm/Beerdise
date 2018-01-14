@@ -11,12 +11,13 @@ Beer search engine build with Angular using [Punk API](https://punkapi.com/).
 * routing
   * /beers/ displays the whole list
   * /beers/id (e.g. /beers/3) displays details of a beer with the given ID
+  * /search;name=NAME (e.g. /search;name=buzz) displays search results
+* data loading spinner
   
 ## Future improvements
   
 * beer search filters
-* data loading spinner
-* RWD
+* RWD improvement
 
 ## Development server
 

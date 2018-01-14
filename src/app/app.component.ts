@@ -1,5 +1,5 @@
-import {Component, ViewChild} from '@angular/core';
-import {BeersListComponent} from './beers-list/beers-list.component';
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,22 +8,11 @@ import {BeersListComponent} from './beers-list/beers-list.component';
 })
 export class AppComponent {
 
-  @ViewChild(BeersListComponent) beersList: BeersListComponent;
-
-  constructor() {
+  constructor(private router: Router) {
   }
 
-
-/*
   goHome() {
-    const currentUrl = this.router.url;
-    console.log(currentUrl);
-    if (currentUrl === '/') {
-      this.data.getBeers();
-    } else {
-      this.router.navigate(['']);
-    }
-
+    this.router.navigate(['']);
   }
-*/
+
 }
