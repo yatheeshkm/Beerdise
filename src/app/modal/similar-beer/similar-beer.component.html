@@ -1,4 +1,4 @@
-<div class="beer">
+<div class="beer" *ngIf="beer">
   <mat-progress-spinner [diameter]="50" mode="indeterminate" class="spinner" *ngIf="imageIsLoading"></mat-progress-spinner>
   <img src="{{beer.image_url}}" (load)="onLoad()" alt="{{beer.name}}" class="thumb" [class.loaded]="!imageIsLoading"/>
   <h5 class="name">{{beer.name}}</h5>

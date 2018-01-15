@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild, OnDestroy} from '@angular/core';
+import {Component, ViewChild, OnDestroy} from '@angular/core';
 import {ISubscription} from 'rxjs/Subscription';
 import {DataService} from '../data.service';
 import {ModalComponent} from '../modal/modal.component';
@@ -11,15 +11,17 @@ import {Router, NavigationEnd} from '@angular/router';
   styleUrls: ['./beers-list.component.scss']
 })
 
-export class BeersListComponent implements OnInit, OnDestroy {
+export class BeersListComponent implements OnDestroy {
   private params;
   private isShowingSearchResults: Boolean;
-  private noSearchResults: Boolean = false;
+  noSearchResults: Boolean = false;
+  noItemsLoaded: Boolean = true;
   beers: Object;
 
   private beersSub: ISubscription;
   private beersObsrv: ISubscription;
   private loadMoreSub: ISubscription;
+  private routerSub: ISubscription;
 
   similarBeers: Object;
   private similarBeersSub: ISubscription;
@@ -30,12 +32,7 @@ export class BeersListComponent implements OnInit, OnDestroy {
   constructor(private data: DataService,
               private route: ActivatedRoute,
               private router: Router) {
-  }
-
-  ngOnInit() {
-    this.initiateView();
-
-    this.router.events.forEach((event) => {
+    this.routerSub = router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.initiateView();
       }
@@ -44,6 +41,7 @@ export class BeersListComponent implements OnInit, OnDestroy {
 
   initiateView() {
     this.noSearchResults = false;
+    this.noItemsLoaded = true;
     this.params = this.route.params['value'];
 
     if (this.isEmpty(this.params)) {
@@ -58,12 +56,14 @@ export class BeersListComponent implements OnInit, OnDestroy {
   getBeers() {
     this.beersSub = this.data.getBeers().subscribe(function () {
       this.beersObsrv = this.data.beersToDisplayObservable.subscribe(beer => this.beers = beer);
+      this.noItemsLoaded = false;
     }.bind(this));
   }
 
   searchBeers(query) {
     this.beersSub = this.data.searchBeer(query).subscribe(function () {
       this.beersObsrv = this.data.beersToDisplayObservable.subscribe(beer => this.beers = beer);
+      this.noItemsLoaded = false;
       if (this.beers.length === 0) {
         this.noSearchResults = true;
       }
@@ -102,6 +102,7 @@ export class BeersListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.beersSub.unsubscribe();
     this.beersObsrv.unsubscribe();
+    this.routerSub.unsubscribe();
   }
 
 }
